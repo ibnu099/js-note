@@ -10,10 +10,13 @@ renderNotes(notes, filters)
 document.querySelector('#btn-create').addEventListener('click', function(e){
     location.assign('/edit.html')
     const id = uuidv4()
+    const timestampe = moment().valueOf()
     notes.push({
         id: id,
         title: '',
-        body: ''
+        body: '',
+        createdAt: timestampe,
+        updatedAt: timestampe
     })
     saveNotes(notes)
     location.assign(`/edit.html#${id}`)
@@ -35,34 +38,3 @@ window.addEventListener('storage', function(e){
         renderNotes(notes, filters)
     }
 })
-
-// document.querySelector('#for-fun').addEventListener('change', function(e){
-//     console.log(e.target.checked)
-// })
-
-// document.querySelector('#name-form').addEventListener('submit', function(e){
-//     e.preventDefault() //prevent default proses, refresh broweser and put input in url
-//     console.log(e.target.elements.firstName.value)
-//     e.target.elements.firstName.value = ''
-// })
-
-
-
-//Query and Remove
-//const p = document.querySelector('p')
-// console.log(p)
-//p.remove()
-
-/*
-//Query All and remove
-const ps = document.querySelectorAll('p')
-ps.forEach(function (p){
-    //console.log(p.textContent)
-    //p.remove()
-    p.textContent = "*********"
-})
-
-// Add new element
-const newParagraph = document.createElement('p')
-newParagraph.textContent = 'This is a new element from javascript'
-document.querySelector('body').appendChild(newParagraph)*/
